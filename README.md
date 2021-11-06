@@ -1,1 +1,1 @@
-COMP229-assignment2
+COMP 229 Group Project
