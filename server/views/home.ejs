@@ -4,9 +4,12 @@
     <div class="container">
     <br>
       <br>
+      <% if(typeof displayName == 'string' && displayName) { %>
       <div>
           <img src="Assets/images/XtremeLogo.png" width="100%"></img>
+         
           <div class="center">
+
             <a class="btn btn-primary" href="/contact-list">Click here to fill out a survey</a>
           </div>
             <br><br>
@@ -20,7 +23,7 @@
       <div class="card-body">
         <h5 class="card-title">Template 1</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="/login" class="btn btn-primary">Go somewhere</a>
+        <a href="/contact-list" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
 
@@ -28,7 +31,38 @@
       <div class="card-body">
         <h5 class="card-title">Template 2</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="/login" class="btn btn-primary">Go somewhere</a>
+        <a href="/contact-list" class="btn btn-primary">Go somewhere</a>
   </div>
   </div>
+   <% } else { %>
+    <div>
+      <img src="Assets/images/XtremeLogo.png" width="100%"></img>
+     
+      <div class="center">
+
+        <a class="btn btn-primary" href="/login">Click here to fill out a survey</a>
+      </div>
+        <br><br>
+    </p>
+  </div>  
+  <br>
+</div>
+
+<div class="card-group">
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Template 1</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="/login" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Template 2</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="/login" class="btn btn-primary">Go somewhere</a>
+</div>
+</div>
+  <% } %>
 </main>
