@@ -15,7 +15,7 @@ router.get('/', indexController.displayHomePage);
 /* GET home page. */
 router.get('/home', indexController.displayHomePage);
 
-/* GET about page. */
+/* GET about us page. */
 router.get('/about', indexController.displayAboutPage);
 
 /* GET projects page. */
