@@ -1,40 +1,45 @@
-//Created by Grant MacMillan
+/*
+Filename: index.js
+Group name: Xtreme Dynamos
+Date: November 11, 2021
+*/
+
 let express = require('express');
 let router = express.Router();
 
 let indexController = require('../controllers/index');
 
-/* GET Home page. */
+/* GET home page. */
 router.get('/', indexController.displayHomePage);
 
-/* GET Home page. */
+/* GET home page. */
 router.get('/home', indexController.displayHomePage);
 
-/* GET About Us page. */
+/* GET about page. */
 router.get('/about', indexController.displayAboutPage);
 
-/* GET Projects page. */
-router.get('/project', indexController.displayProjectsPage);
+/* GET projects page. */
+router.get('/projects', indexController.displayProjectsPage);
 
-/* GET Services page. */
+/* GET services page. */
 router.get('/services', indexController.displayServicesPage);
 
-/* GET Contact Us page. */
-router.get('/contact', indexController.displayContactPage);
+/* GET contact page. */
+router.get('/contact', indexController.displayContactMePage);
 
-// Get Route for displaying the Login page
+/*Get Route for displaying the Login page*/
 router.get('/login', indexController.displayLoginPage);
 
-// POST Route for processing the Login page
+/*Post Route for processing the Login page*/
 router.post('/login', indexController.processLoginPage);
 
-// Get Route for displaying the Register page
+/*Get Route for displaying the Register page*/
 router.get('/register', indexController.displayRegisterPage);
 
-// POST Route for processing the Register page
+/*Post Route for processing the REgister page*/
 router.post('/register', indexController.processRegisterPage);
 
-// Get to preform Logout
-router.get('/logout', indexController.preformLogout);
+/*Get Route to perform Logout*/
+router.get('/logout', indexController.performLogout);
 
 module.exports = router;

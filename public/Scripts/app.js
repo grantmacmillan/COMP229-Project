@@ -1,22 +1,28 @@
-// IIFE -- Immediately Invoked Function Expression
+/*
+Filename: app.js 
+Student name: Xtreme Dynamos
+Date: November 11, 2021
+*/
+
 (function(){
-
-    function Start(){
+    function Start()
+    {
         console.log("App Started...");
-
-        let deleteButtons = document.querySelectorAll('.btn-danger')
-        //delete button confirmation
-        for(button of deleteButtons){
-            button.addEventListener('click', (event) =>{
-                if (!confirm("Are you sure?")){
+        let deleteButtons = document.querySelectorAll('.btn-danger');
+        
+        //Adding events to buttons
+        for(button of deleteButtons)
+            button.addEventListener('click', (event) => 
+            {
+                //Confirmation before deleting
+                if(!confirm("Are you sure?"))
+                {
                     event.preventDefault();
-                    window.location.assign('/contact-list');
+                    window.location.assign('/survey-listSurvey');
                 }
             });
-        }
     }
-
-    window.addEventListener("load", Start);
-
     
-})();
+    window.addEventListener("load", Start);
+    
+    })();

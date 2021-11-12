@@ -1,80 +1,85 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/">
-    <img src="/Assets/images/Signature.PNG" width="30" height="30" alt="">
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<!--
+Filename: main_nav.ejs
+Group name: Xtreme Dynamos
+Date: November 11, 2021
+-->
+ 
+ <!--Main Nav From Bootstrap 5.1-->
+  <nav class="navbar navbar-expand-lg navbar-white bg-white fixed-top">
+    <div class="container">
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mx-auto">
+      <!--Collapse button-->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i><span class="navbar-toggler-icon"></span>
+      </button>
 
-<!-- IMAGE FOR NAV BAR -->
+      <!--Logo Brand Button-->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <a class="navbar-brand" href="/"><img src="/assets/images/XtremeLogo2.png" width="45px" alt="Logo"></a>
+         
+          <!--List of nav items linked to pages-->
+          <!--Home-->
           <li class="nav-item">
             <% if (title == "Home") { %>
-              <a class="nav-link active text success" aria-current="page" href="/home"><i class="fas fa-home"></i> Home </a>
-            <% } else { %> 
-            <a class="nav-link" href="/home"><i class="fas fa-home"></i> Home </a>
-            <% } %>
-          </li>
-
-          <li class="nav-item">
-            <% if (title == "About") { %>
-              <a class="nav-link active text success" aria-current="page" href="/about"><i class="fas fa-info-circle"></i> About </a>
-            <% } else { %> 
-            <a class="nav-link" href="/about"><i class="fas fa-info-circle"></i> About </a>
-            <% } %>
-          </li>
-
-          <!--
-          <li class="nav-item">
-            <% if (title == "Projects") { %>
-              <a class="nav-link active text success" aria-current="page" href="/project"><i class="fab fa-canadian-maple-leaf"></i> Projects </a>
-            <% } else { %> 
-            <a class="nav-link" href="/project"><i class="fab fa-canadian-maple-leaf"></i> Projects </a>
-            <% } %>
-          </li>
-          -->
-
-          <!--
-          <li class="nav-item">
-            <% if (title == "Services") { %>
-              <a class="nav-link active text success" aria-current="page" href="/services"><i class="fas fa-cogs"></i> Services </a>
-            <% } else { %> 
-            <a class="nav-link" href="/services"><i class="fas fa-cogs"></i> Services </a>
-            <% } %>
-          </li>
-          -->
-          <li class="nav-item">
-            <% if (title == "Contact") { %>
-              <a class="nav-link active text success" aria-current="page" href="/contact"><i class="fas fa-mobile-alt"></i> Contact </a>
-            <% } else { %> 
-            <a class="nav-link" href="/contact"><i class="fas fa-mobile-alt"></i> Contact </a>
-            <% } %>
-          </li>
-
-          <li class="nav-item">
-            <% if (title == "ContactList") { %>
-              <a class="nav-link active text success" aria-current="page" href="/contact-list"><i class="fas fa-list"></i> Surveys </a>
-            <% } else { %> 
-            <a class="nav-link" href="/contact-list"><i class="fas fa-list"></i> Surveys </a>
-            <% } %>
-          </li>
-
-          
-            <% if (typeof displayName == 'string' && displayName) { %>
-                  <li class="navbar-text"><i class="fas fa-lg fa-user"></i> Welcome, <%= displayName %></li>
-                  <li class="nav-item"><a href="/logout" class="nav-link">
-                  <i class="fas fa-lg fa-sign-out-alt"></i> Logout</a></li>
-
+              <a class="nav-link active text-success" aria-content="page" href="/home"><i class="fas fa-home"></i> Home </a>
             <% } else { %>
-                  <li class="nav-item"><a href="/login" class="nav-link">
-                  <i class="fas fa-lg fa-sign-in-alt"></i> Login</a></li>
+              <a class="nav-link text-dark" href="/home"><i class="fas fa-home"></i> Home </a>
             <% } %>
-
-              
           
+          <!--About-->
+          <li class="nav-item">
+          <% if (title == "About Me") { %>
+            <a class="nav-link active text-success" aria-content="page" href="/about"><i class="fas fa-info-circle"></i> About Me </a>
+          <% } else { %>
+            <a class="nav-link text-dark" href="/about"><i class="fas fa-info-circle"></i> About Me </a>
+          <% } %> 
+            
+          <!--Projects-->
+          <!--
+          <li class="nav-item">
+          <% if (title == "Projects") { %>
+            <a class="nav-link active text-success" aria-content="page" href="/projects"><i class="fas fa-project-diagram"></i> Projects </a>
+          <% } else { %>
+            <a class="nav-link text-dark" href="/projects"><i class="fas fa-project-diagram"></i> Projects </a>
+          <% } %> -->
 
+          <!--Services-->
+          <!--
+          <li class="nav-item">
+          <% if (title == "Services") { %>
+              <a class="nav-link active text-success" aria-content="page" href="/services"><i class="fas fa-cogs"></i> Services </a>
+          <% } else { %>
+              <a class="nav-link text-dark" href="/services"><i class="fas fa-cogs"></i> Services </a>
+          <% } %> -->
+
+          <!--Business Contact List-->
+          <li class="nav-item">
+          <% if (title == "Surveys") { %>
+              <a class="nav-link active text-success" aria-content="page" href="/survey-listSurvey"><i class="fas fa-id-card"></i> Surveys </a>
+          <% } else { %>
+              <a class="nav-link text-dark" href="/survey-listSurvey"><i class="fas fa-id-card"></i> Surveys </a>
+          <% } %>
+
+          <!--Contact Me-->
+          <!--
+          <li class="nav-item">
+          <% if (title == "Contact Me") { %>
+            <a class="nav-link active text-success" aria-content="page" href="/contact"><i class="fas fa-mobile-alt"></i> Contact Me </a>
+          <% } else { %>
+            <a class="nav-link text-dark" href="/contact"><i class="fas fa-mobile-alt"></i> Contact Me </a>
+          <% } %> -->
+
+          <!--Conditionary Login/Logout Navbar-->
+          <% if(typeof displayName == 'string' && displayName) { %>
+            <li class="navbar-text"><i class="fas fa-lg fa-user"></i> Welcome, <%= displayName %></li>
+            <li class="nav-item"><a href="/logout" class="nav-link">
+              <i class="fas fa-lg fa-sign-out-alt"></i> Logout</a></li>
+          <% } else { %>
+            <li class="nav-item"><a href="/login" class="nav-link">
+              <i class="fas fa-lg fa-sign-in-alt"></i> Login</a></li>
+          <% } %>
+
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>

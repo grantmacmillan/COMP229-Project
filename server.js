@@ -1,58 +1,46 @@
 #!/usr/bin/env node
 
 /**
- * Module dependencies.
+Filename: server.js
+Group name: Xtreme Dynamos
+Date: November 11, 2021
  */
 
+//Module Dependencies
 var app = require('./server/config/app');
-var debug = require('debug')('comp229-assignment1:server');
+var debug = require('debug')('assignment1-comp229:server');
 var http = require('http');
 
-/**
- * Get port from environment and store in Express.
- */
-
+//Get Port From Environment and Store in Express
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
-/**
- * Create HTTP server.
- */
-
+//Create HTTP Server
 var server = http.createServer(app);
 
-/**
- * Listen on provided port, on all network interfaces.
- */
-
+//Listen on Provided Port, on All Network Interfaces
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-/**
- * Normalize a port into a number, string, or false.
- */
-
+//Normalize a Port Into a Number, String, or False
 function normalizePort(val) {
   var port = parseInt(val, 10);
 
   if (isNaN(port)) {
-    // named pipe
+    //Named Pipe
     return val;
   }
 
   if (port >= 0) {
-    // port number
+    //Port Number
     return port;
   }
 
   return false;
 }
 
-/**
- * Event listener for HTTP server "error" event.
- */
-
+//Event Listener for HTTP Server "Error" Event
 function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
@@ -62,7 +50,7 @@ function onError(error) {
     ? 'Pipe ' + port
     : 'Port ' + port;
 
-  // handle specific listen errors with friendly messages
+  //Handle Specific Listen Errors with Friendly Messages
   switch (error.code) {
     case 'EACCES':
       console.error(bind + ' requires elevated privileges');
@@ -77,10 +65,7 @@ function onError(error) {
   }
 }
 
-/**
- * Event listener for HTTP server "listening" event.
- */
-
+//Event Listener for HTTP Server "Listening" Event
 function onListening() {
   var addr = server.address();
   var bind = typeof addr === 'string'

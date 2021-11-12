@@ -1,25 +1,16 @@
 <!--
-Filename: index.ejs
+Filename: templatesSurvey.ejs
 Group name: Xtreme Dynamos
 Date: November 11, 2021
 -->
 
-<%- include('partials/header.ejs') %>
-<%- include('partials/main_nav.ejs') %>
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/main_nav.ejs') %>
 
-  <!--Main Content-->
-  <!--Header of the main-->
-  <main class="container">
-    <div class="button-container">
-      <img src="/assets/images/banner.png" style="width: 100%; margin-top: 10px; border-style: solid; border-color: black; border-width: 2px;" alt="Banner">
-        <a href="/survey-listSurvey">
-            <input type="button" class="btn btn-success" value="Select a Survey"/>
-        </a>
-    </div>
-  
-  <!--Body of the main-->
+<main>
+    <h3 style="text-align: center">Create a survey using one of the two templates below:</h3>
       <div>
-        <table style="margin-top: 40px;">
+        <table style="margin-top: 50px;">
           <tr>
             <td>
               <div class="card" style="width: 18rem;">
@@ -27,7 +18,7 @@ Date: November 11, 2021
                   <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">Template 1</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="/survey-listSurvey/addSurvey" class="btn btn-success">Create</a><!--This we want to redirect to another page-->
+                    <a href="/survey-listSurvey/firstTemplateSurvey" class="btn btn-success">Create</a>
                   </div>
               </div>
             </td>
@@ -37,19 +28,14 @@ Date: November 11, 2021
                   <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">Template 2</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="/survey-listSurvey/addSurvey" class="btn btn-success">Create</a>
+                    <a href="/survey-listSurvey/secondTemplateSurvey" class="btn btn-success">Create</a>
                   </div>
               </div>
             </td>
           </tr>
         </table>
       </div>
-  </main>
+</main>
 
-<%- include('partials/bottom_nav.ejs') %>
-<%- include('partials/footer.ejs') %>
-
-
-
-    
-    
+<%- include('../partials/bottom_nav.ejs') %>
+<%- include('../partials/footer.ejs') %>

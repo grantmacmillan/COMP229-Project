@@ -1,21 +1,30 @@
+<!--
+Filename: about.ejs
+Group name: Xtreme Dynamos
+Date: November 11, 2021
+-->
+
+<%- include('partials/header.ejs') %>
+<%- include('partials/main_nav.ejs') %>
+
+<!--Main content-->
 <main class="container">
-  <div class="jumbotron">
-    <h1 class="display-2"></h1>
-    <div class="container">
-    <br>
-    <div class="text-center">
-      <h1>Xtreme Dyanos</h1>   
-      </div> 
-      <hr />
-      <div class="row">
-      <div class="col">
-        <div class="text-center">
-        <img src="/Assets/images/XtremeLogo2.png" alt="Portrait" class="img-thumbnail" >
-      </div>
-       </div>
-      <div class="col">
-      <p>Hello! We are an company called "Xtreme Dyanos!" This website that you are currently on is a survey-based website where you can create, view, share your own survey!</p>
-      
-      </div>
+    <div  style="padding-top: 10px;">
+        <p class="titles"><%= title %></p>
+
+<!--Body of main-->
+    <table>
+        <tr>
+
+            <!--About Me descriptive paragraph-->
+            <td id="aboutMe" style="padding-right: 100px;">
+                <p> &emsp; About us text here... <br>
+                </p>
+            </td>
+        </tr>
+    </table>
     </div>
 </main>
+
+<%- include('partials/bottom_nav.ejs') %>
+<%- include('partials/footer.ejs') %>

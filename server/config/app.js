@@ -1,4 +1,10 @@
-//installed 3rd party packages (via ecentennial videos)
+/*
+Filename: app.js 
+Group name: Xtreme Dynamos
+Date: November 11, 2021
+*/
+
+//Installed 3rd party packages
 let createError = require('http-errors');
 let express = require('express');
 let path = require('path');
@@ -6,77 +12,78 @@ let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
 //modules for authentication
-let session = require ('express-session');
+let session = require('express-session');
 let passport = require('passport');
 let passportLocal = require('passport-local');
 let localStrategy = passportLocal.Strategy;
 let flash = require('connect-flash');
 
-//database setup
+//Database setup
 let mongoose = require('mongoose');
-let DB = require('./db');
+let db = require('./db');
 
-//point mongoose to the DB URI
-mongoose.connect(DB.URI);
+//Point mongoose to the DB URI
+mongoose.connect(db.URI, {useNewUrlParser: true, useUnifiedTopology: true});
 
 let mongoDB = mongoose.connection;
-mongoDB.on('error', console.error.bind(console, 'Connection Error'));
-mongoDB.once('open', ()=>{
-  console.log('Connected to MongoDB...');
+mongoDB.on('error', console.error.bind(console, 'Connection error'));
+mongoDB.once('open', () => {
+  console.log('Connected to mongoDB...');
 });
-
 
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
-let contactsRouter = require('../routes/contact');
-const { Passport } = require('passport');
+let surveysRouter = require('../routes/survey');
 
 let app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
-app.set('view engine', 'ejs'); //express -e in console
+app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+//Path to public and node_modules folders
 app.use(express.static(path.join(__dirname, '../../public')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
 
-//express session
+//setup express session
 app.use(session({
   secret: "SomeSecret",
   saveUninitialized: false,
   resave: false
 }));
 
-//initalize flash
+//Initialize flash
 app.use(flash());
 
-//initalize passport
+//Initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
 
-//passport user Configuration
+//Passport user config
 
-//create a User Model Instance
+//Create User Model Instance
 let userModel = require('../models/user');
 let User = userModel.User;
 
-//implement a user authentication strat
+//Implement a User Authentication strategy
 passport.use(User.createStrategy());
 
-//serialize and deserialize the User Info
+//Serialize and Deserialize User info
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
+//Users route
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/contact-list', contactsRouter);
+app.use('/survey-listSurvey', surveysRouter);
 
-// catch 404 and forward to error handler
+//catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
@@ -89,7 +96,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error', { title: 'Error'});
+  res.render('error', {title: 'Error'});
 });
 
 module.exports = app;

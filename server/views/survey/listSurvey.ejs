@@ -1,0 +1,88 @@
+<!--
+Filename: listSurvey.ejs
+Group name: Xtreme Dynamos
+Date: November 11, 2021
+-->
+
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/main_nav.ejs') %>
+
+<!--Survey List Main Content-->
+<main class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-offset-3 col-md-8">
+            <p class="titles"><%= title %></p>
+            
+            <!--Add Survey Button-->
+            <% if(typeof displayName == 'string' && displayName) { %>
+            <div style="text-align: center;">
+                <a href="/survey-listSurvey/templatesSurvey" class="btn btn-success" role="button">
+                <i class="fas fa-plus-circle"></i> Add a Survey</a>
+            </div>
+            <br>
+            <% } %>
+
+            <!--Table Content-->
+            <table class="table table-bordered table-striped table-hover table-responsive">
+                <!--Header Row-->
+                <tr>
+                    <!--Login display-->
+                    <% if(typeof displayName == 'string' && displayName) { %>
+                    <th class="text-center col-1">#</th>
+                    <th class="text-center col-2">Survey Title</th>
+                    <th class="text-center col-2">Description</th>
+                    <th class="text-center col-1"></th>
+                    <th class="text-center col-1"></th>
+                    <th class="text-center col-1"></th>
+                    <!--Logout display-->
+                    <% } else { %>
+                    <th class="text-center col-1">#</th>
+                    <th class="text-center col-3">Survey Title</th>
+                    <th class="text-center col-3">Description</th>
+                    <th class="text-center col-1"></th>
+                    <% } %>
+                </tr>
+
+                <!--Repeatable Template Row-->
+                <% for(let i = 0; i < SurveyList.length; i++) { %>
+                    <tr>
+                        <!--Login display-->
+                        <% if(typeof displayName == 'string' && displayName) { %>
+                        <td class="text-center col-1"> <%= SurveyList[i].number %> </td>
+                        <td class="text-center col-2"> <%= SurveyList[i].title %> </td>
+                        <td class="text-center col-2"> <%= SurveyList[i].description %> </td>
+                        <td class="text-center col-1">
+                            <a href="/survey-listSurvey/statisticsSurvey/<%= SurveyList[i]._id %>" class="btn btn-primary btn-sm">
+                            <i class="fas fa-pencil-alt"></i> Stats</a>
+                        </td>
+                        <td class="text-center col-1">
+                            <a href="/survey-listSurvey/selectedSurvey/<%= SurveyList[i]._id %>" class="btn btn-primary btn-sm">
+                            <i class="fas fa-pencil-alt"></i> Select</a>
+                        </td>
+                        <td class="text-center col-1">
+                            <a href="/survey-listSurvey/editSurvey/<%= SurveyList[i]._id %>" class="btn btn-primary btn-sm">
+                            <i class="fas fa-pencil-alt"></i> Update</a>
+                        </td>
+                        <td class="text-center col-1">
+                            <a href="/survey-listSurvey/delete/<%= SurveyList[i]._id %>" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash-alt"></i> Delete</a>
+                        </td>
+                        <!--Logout display-->
+                        <% } else { %>
+                        <td class="text-center col-2"> <%= SurveyList[i].number %> </td>
+                        <td class="text-center col-3"> <%= SurveyList[i].title %> </td>
+                        <td class="text-center col-3"> <%= SurveyList[i].description %> </td>
+                        <td class="text-center col-1">
+                            <a href="/survey-listSurvey/selectedSurvey/<%= SurveyList[i]._id %>" class="btn btn-primary btn-sm">
+                            <i class="fas fa-pencil-alt"></i> Select</a>
+                        </td>
+                        <% } %>
+                    </tr>
+                <% } %> 
+            </table>
+        </div>
+    </div>
+</main>
+
+<%- include('../partials/bottom_nav.ejs') %>
+<%- include('../partials/footer.ejs') %>

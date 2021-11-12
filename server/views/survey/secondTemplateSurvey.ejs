@@ -1,0 +1,73 @@
+<!--
+Filename: secondTemplateSurvey.ejs
+Group name: Xtreme Dynamos
+Date: November 11, 2021
+-->
+
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/main_nav.ejs') %>
+
+<main>
+    <div class="container" style="margin-top: 100px; border-width: 1px; border-style: solid; border-color: black">
+        <div style="height: 500px;">
+            <h3 class="titles" style="margin-top: 5px;">Template 2</h3>
+        </div>
+    </div>
+    <!--Main Content-->
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <br><br><br>
+            <div style="text-align: center;">
+                <p class="titles"><%= title %></p>
+            </div>
+
+            <!--Form Content-->
+            <form method="POST" class="form">
+                <!--Survey Name Field-->
+                <div class="form-group">
+                    <label class="surveyAdd" for="titleTextField">Survey Name</label>
+                    <input type="text" class="form-control"
+                    id="titleTextField"
+                    placeholder="Enter the Survey's name"
+                    name="title"
+                    required>
+                </div>
+
+                <!--Number Field-->
+                <div class="form-group">
+                    <label class="surveyAdd" for="numberTextField">Survey Number</label>
+                    <input type="text" class="form-control"
+                    id="numberTextField"
+                    placeholder="#"
+                    name="number"
+                    required>
+                </div>
+
+                <!--Description Field-->
+                <div class="form-group">
+                    <label class="surveyAdd" for="descriptionTextField">Description</label>
+                    <input type="text" class="form-control"
+                    id="descriptionTextField"
+                    placeholder="Short description of the survey"
+                    name="description"
+                    required>
+                </div>
+                
+                <!--Buttons-->
+                <br>
+                <div style="text-align: center;">
+                <button class="btn btn-success" type="submit">
+                    <i class="fas fa-edit"></i> Submit</button>
+
+                    <a href="/survey-listSurvey" class="btn btn-warning">
+                        <i class="fas fa-undo"></i> Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div> 
+</div>
+</main>
+
+<%- include('../partials/bottom_nav.ejs') %>
+<%- include('../partials/footer.ejs') %>

@@ -1,3 +1,9 @@
+/*
+Filename: db.js 
+Group name: Xtreme Dynamos
+Date: November 11, 2021
+*/
+
 module.exports = 
 {
     //"URI": "mongodb://localhost/assignment_contacts"

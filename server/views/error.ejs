@@ -1,11 +1,18 @@
-<%- include partials/header.ejs%>
+<!--
+Filename: error.ejs
+Group name: Xtreme Dynamos
+Date: November 11, 2021
+-->
 
-<%- include partials/main_nav.ejs%>
+<%- include('partials/header.ejs') %>
+<%- include('partials/main_nav.ejs') %>
 
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
-
-<%- include partials/bottom_nav.ejs%>
-
-<%- include partials/footer.ejs%>
+<!--Error Message-->
+    <div>
+      <h1><%= message %></h1>
+        <h2><%= error.status %></h2>
+        <pre><%= error.stack %></pre>
+    </div>
+  
+<%- include('partials/bottom_nav.ejs') %>
+<%- include('partials/footer.ejs') %>

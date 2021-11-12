@@ -1,121 +1,168 @@
+/*
+Filename: index.js 
+Group name: Xtreme Dynamos
+Date: November 11, 2021
+*/
+
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
 let passport = require('passport');
-const { register } = require('../models/contacts');
 
-//create the user model instance
+//create User Model instance
 let userModel = require('../models/user');
 let User = userModel.User; //alias
 
+//Displays Home Page
 module.exports.displayHomePage = (req, res, next) => {
     res.render('index', {title: 'Home', displayName: req.user ? req.user.displayName : ''});
-}
+};
 
+//Displays About Page
 module.exports.displayAboutPage = (req, res, next) => {
-    res.render('index', { title: 'About', displayName: req.user ? req.user.displayName : ''});
-}
+    res.render('about', {title: 'About Me', displayName: req.user ? req.user.displayName : ''});
+};
 
+//Displays Projects Page
 module.exports.displayProjectsPage = (req, res, next) => {
-    res.render('index', { title: 'Projects', displayName: req.user ? req.user.displayName : ''});
-}
+    res.render('projects', {title: 'Projects', displayName: req.user ? req.user.displayName : ''});
+};
 
+//Displays Services Page
 module.exports.displayServicesPage = (req, res, next) => {
-    res.render('index', { title: 'Services', displayName: req.user ? req.user.displayName : ''});
-}
+    res.render('services', {title: 'Services', displayName: req.user ? req.user.displayName : ''});
+};
 
-module.exports.displayContactPage = (req, res, next) => {
-    res.render('index', { title: 'Contact', displayName: req.user ? req.user.displayName : ''});
-}
+//Displays Contact Me Page
+module.exports.displayContactMePage = (req, res, next) => {
+    res.render('contact', {title: 'Contact Me', displayName: req.user ? req.user.displayName : ''});
+};
 
-module.exports.displayLoginPage = (req,res,next) => {
-    if(!req.user){
+
+//Displays Login Page
+module.exports.displayLoginPage = (req, res, next) =>
+{
+    //check if the user is already logged in
+    if(!req.user)
+    {
         res.render('auth/login', 
         {
             title: "Login",
-            messages: req.flash('LoginMessage'),
-            displayName: req.user ? req.user.displayName : ''
+            messages: req.flash('loginMessage'),
+            displayName: req.user ? req.user.displayName: ''
         });
     }
-    else{
+    else
+    {
         return res.redirect('/');
     }
-}
+}  
 
-module.exports.processLoginPage = (req, res, next) => {
-    passport.authenticate('local',
-    (err, user, info) => {
-        //server err
-        if(err){
-            return next(err);
-        }
-        //is there a login err?
-        if(!user){
+//Processes Login Page
+module.exports.processLoginPage = (req, res, next) =>
+{
+    passport.authenticate('local', 
+    (err, user, info) => 
+    {
+       //server error?
+       if(err)
+       {
+           return next(err);
+       } 
+
+       //is there a user login error?
+       if(!user)
+       {
             req.flash('loginMessage', 'Authentication Error');
             return res.redirect('/login');
-        }
-        req.login(user, (err) => {
-            if(err){
-                return next(err);
-            }
-            return res.redirect('/contact-list'); //this needs to be contact list page at some point
-        });
-    })(req, res, next);
+       }
+
+       req.login(user, (err) => {
+           //server error?
+           if(err)
+           {
+                return next(err);               
+           }
+           return res.redirect('/survey-listSurvey');
+       });
+    }) (req, res, next);
 }
 
-module.exports.displayRegisterPage = (req,res,next) =>{
-
-    if(!req.user){
-        res.render('auth/register',
-        {
-            title: 'Register',
+//Displays Register Page
+module.exports.displayRegisterPage = (req, res, next) =>
+{
+    //Checks if the user is not already logged in
+    if(!req.user)
+    {
+        res.render('auth/register', {
+            title: "Register",
             messages: req.flash('registerMessage'),
-            displayName: req.user ? req.user.displayName : ''
+            displayName: req.user ? req.user.displayName: ''
         });
     }
-    else{
+    else
+    {
         return res.redirect('/');
     }
 }
 
-module.exports.processRegisterPage = (req,res,next) => {
-    //instanceiate user object
+//Process Register Page
+module.exports.processRegisterPage = (req, res, next) =>
+{
+    //create a user object
     let newUser = new User({
         username: req.body.username,
-        //password: req.body.password
         email: req.body.email,
         displayName: req.body.displayName
     });
 
-    User.register(newUser, req.body.password, (err) => {
-        if(err){
+    User.register(newUser, req.body.password, (err) =>
+    {
+        if(err)
+        {
             console.log("Error: Inserting New User");
-            if(err.name == "UserExistsError"){
+            if(err.name == "UserExistsError")
+            {
                 req.flash(
                     'registerMessage',
-                    'Registration Error: User Already Exists!'
+                    'Registration Error: User Already Exists!' 
                 );
-                console.log('Error: User Already Exists!')
+                console.log('Error: User Already Exists!')  
             }
-            return res.render('auth/register', {
-                title: 'Register',
+            return res.render('auth/register', 
+            {
+                title: "Register",
                 messages: req.flash('registerMessage'),
-                displayName: req.user ? req.user.displayName : ''
+                displayName: req.user ? req.user.displayName: '' 
             });
         }
-        else{
-            // if no error exists, the registration is sucessful
-
-            //redirect user and authicenticate them
-
+        else
+        {
+            //if no error exists, then registration is successful
+            //redirect the user and authenticate them
             return passport.authenticate('local')(req, res, () => {
-                res.redirect('/contact-list')
+                res.redirect('/survey-listSurvey');
             });
         }
     });
+    if(!req.user)
+    {
+        res.render('auth/register', {
+            title: "Register",
+            messages: req.flash('registerMessage'),
+            displayName: req.user ? req.user.displayName: ''
+        });
+    }
+    else
+    {
+        return res.redirect('/');
+    }
 }
 
-module.exports.preformLogout = (req, res, next) => {
+//Perform Logout
+module.exports.performLogout = (req, res, next) => 
+{
     req.logout();
     res.redirect('/');
 }
+

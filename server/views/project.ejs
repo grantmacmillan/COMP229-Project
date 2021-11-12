@@ -1,44 +1,84 @@
-<main class="container">
-  <div class="jumbotron">
-    <h1 class="display-2"></h1>
-    <div class="container">
-    <br>
-      <h1>Projects</h1>    
-      <br>
+<!--
+Filename: projects.ejs
+Group name: Xtreme Dynamos
+Date: November 11, 2021
+-->
 
-        <div>
+<%- include('partials/header.ejs') %>
+<%- include('partials/main_nav.ejs') %>
+
+<!--Main content-->
+<main>
+    <div>
+        <p class="titles"><%= title %></p>
+
+<!--Body of main-->
         <table>
-        <tr>
-            <td> <p style="font-size:20px">For one of my projects at Centennial College we worked with 3d modeling and anaimation. I took great interest to 3d modeling. In this image you can see 
-            one of my better 3d models. I also anaimated these model to have various actions, such as walk, run and jump.
-          </p> </td>
-            
-            <td><img style = "display:block: margin-top:10px: margin-bottom: 10px: margin-left: auto: margin-right:auto;" src="/Assets/images/Project1.PNG" class="card-img-top" alt="..." style="width:200%"></td>
-        </tr>
-        <tr>
-            <td> <p style="font-size:20px">In my first semester at Centennial College in the game programming program, we were asked to create a 2d video game with our group memebers. 
-            The game was called DeTechtive-Noir and it was a top down 2d murder mystery game. I focused mainly on the UI elements of the game, including the menus, in game dialog and sound effects. 
-          </p> </td>
-            
-            <td><img style = "display:block: margin-top:10px: margin-bottom: 10px: margin-left: auto: margin-right:auto;" src="/Assets/images/Project2.PNG" class="card-img-top" alt="..." style="width:200%"></td>
-        </tr>
-        <tr>
-        <td> <p style="font-size:20px">A Project I am currently working on is a game called Origins' Fall. It is still in its Alpha stages of developement but we are making swift progress.
-        I am working on this project with a team of 4 other people. I have high hopes for this project since all of us are now more experienced with Unity2d, and coding in general.
-          </p> </td>
-            
-            <td><img style = "display:block: margin-top:10px: margin-bottom: 10px: margin-left: auto: margin-right:auto;" src="/Assets/images/Project3.PNG" class="card-img-top" alt="..." style="width:200%"></td>
-            
-        </tr>
+            <tr>
+                <td>
 
-        
-    </table>
+                    <!--Cards class used from bootstrap 5.1 - Flexible container that organizes an image, title, and body-->
+                    <!--Card 1 - Estimating Project-->
+                    <div class="card" style="width: 18rem;">
+                        <img id="quickbooks" src="/assets/images/quickbooksProject.png" class="card-img-top" alt="Network">
+                        <!--Card-body class from Bootstrap 5.1 - Organizes the body of the card. Allows for other functionalities
+                        to be added.-->
+                        <div class="card-body">
+                            <div class="secondaryTitles">
+                              Estimating System
+                            </div>
+                            
+                            <!--Short Description-->
+                            <p class="card-text"> 
+                              &emsp;I am currently working on an estimating system that will integrate 
+                              with QuickBooks to calculate accurate estimates. My roles are to design and program Super Dave 
+                              using C# and the MVVM architecture. This is an ongoing project.</p>
+                        </div>
+                    </div>
+                </td>
+                <td>
 
-<br><br><br><br><br>
-       
+                    <!--Card 2 - Video Game Project-->
+                    <div class="card" style="width: 18rem;">
+                        <img src="/assets/images/barlowInterface.png" class="card-img-top" alt="Barlow Interface">
+                        <div class="card-body">
+                            <div class="secondaryTitles">
+                                Barlow
+                            </div>
 
-        </div> 
-        
-   </div>
-  </div>
+                            <!--Short Description-->
+                            <p class="card-text"> &emsp;I am currently working on a platformer video game called Barlow.
+                                In this adventure game, the player must help Stella traverse each level while gathering as many points as possible.  
+                                My roles are to design and program this project. This is an ongoing project.</p>                      
+                        </div>
+                    </div>
+                </td>
+                <td style="text-align: center;">
+
+                    <!--Card 3 - Metamorpharts Project-->
+                    <div class="card" style="width: 18rem;">
+                        <img src="/assets/images/metamorpharts.png" class="card-img-top" alt="Metamorpharts">
+                        <div class="card-body">
+                            <div class="secondaryTitles">
+                                Metamorpharts
+                            </div>
+
+                            <!--Short Description-->
+                          <p class="card-text"> &emsp;Metamorpharts is a company that sells handmade pens and pencils, bags, furnitures, and more.
+                              My roles are to protograph the products and design the website using wix templates. 
+                              This is an ongoing project.
+                          </p>
+
+                          <!--Link to Metamorpharts Website-->
+                          <a href="https://www.metamorpharts.com/" target="_blank" class="btn btn-dark">Website</a>
+                        </div>
+                      </div>
+                </td>
+            </tr>
+        </table>  
+    </div>
 </main>
+
+
+<%- include('partials/bottom_nav.ejs') %>
+<%- include('partials/footer.ejs') %>
